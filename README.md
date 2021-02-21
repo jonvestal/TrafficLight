@@ -26,7 +26,7 @@ In order to use you will need a server that returns JSON in the following format
         }
 '''
 
-There is a non-production version of a sample in the "Server" folder.
+There is a non-production version of a sample in the "server" folder.
 
 Good luck and please provide constructive feedback.
 
