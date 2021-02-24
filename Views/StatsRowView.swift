@@ -9,7 +9,6 @@ import SwiftUI
 
 struct StatsRowView: View {
     let stat: Stat
-    let host: String
     
     var body: some View {
         HStack {
@@ -29,7 +28,7 @@ struct StatsRowView: View {
 struct StatsRowView_Previews: PreviewProvider {
     static var stat = Stat.data[0]
     static var previews: some View {
-        StatsRowView(stat: stat, host: "Host 0")
+        StatsRowView(stat: stat)
             .previewLayout(.fixed(width: 400, height: 60))
     }
 }

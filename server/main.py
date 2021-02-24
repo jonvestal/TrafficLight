@@ -48,7 +48,8 @@ class Stats(Resource):
                                  'Progress of current sprint measured in total story points.  Green is DONE, Yellow is IN-PROGRESS, Red is TODO',
                                  38.9,
                                  51,
-                                 23.5).stat]}
+                                 23.5).stat,
+                           Stat('Random Data', 'Everything is made up').stat]}
         print(stats)
         return stats, 200
 

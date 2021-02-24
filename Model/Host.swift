@@ -37,11 +37,6 @@ public struct Host: Hashable, Identifiable, Codable {
     public static func == (lhs: Host, rhs: Host) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
-    
-    public mutating func update(from data: Data) {
-        self.name = data.name
-        self.url = data.url
-    }
 }
 
 extension Host {
@@ -50,13 +45,3 @@ extension Host {
     }
 }
 
-extension Host {
-    public struct Data {
-        public var name: String = ""
-        public var url = ""
-    }
-
-    var data: Data {
-        return Data(name: name, url: url)
-    }
-}

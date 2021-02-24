@@ -7,25 +7,43 @@
 
 import Foundation
 import SwiftUI
+import Combine
+
+class Model: ObservableObject {
+    @Published var statsManager: StatsFetcher = StatsFetcher(host: Host(name: "", url: ""))
+    @AppStorage("name", store: UserDefaults(suiteName: "group.com.jdv.TrafficLight")) var name: String = ""
+    @AppStorage("url", store: UserDefaults(suiteName: "group.com.jdv.TrafficLight")) var url: String = ""
+    
+    var anyCancellable: AnyCancellable? = nil
+    
+    init() {
+        anyCancellable = statsManager.objectWillChange.sink { [weak self] (_) in
+            self?.objectWillChange.send()
+        }
+        
+        statsManager.host = Host(name: name, url: url)
+        print("init model. name = \(name), url = \(url)")
+    }
+}
 
 struct StatsView: View {
     @State private var isPresented = false
-    @ObservedObject var statsManager = StatsFetcher(host: Host(name: "", url: ""))
+    @StateObject var model: Model = Model()
     
     var body: some View {
         VStack {
-            if !statsManager.stats.isEmpty {
+            if !model.statsManager.host.url.isEmpty {
                 List {
-                    Section(header: Text("\(statsManager.host.name)"), footer: updateAtText().font(.caption)) {
-                        ForEach(statsManager.stats) { stat in
-                            NavigationLink(destination: StatDetailView(statsManager: statsManager, statIndex: index(for: stat, in: statsManager))) {
-                                StatsRowView(stat: stat, host: statsManager.host.name)
+                    Section(header: Text("\(model.statsManager.host.name)"), footer: updateAtText().font(.caption)) {
+                        ForEach(model.statsManager.stats) { stat in
+                            NavigationLink(destination: StatDetailView(statsManager: model.statsManager, statIndex: index(for: stat, in: model.statsManager))) {
+                                StatsRowView(stat: stat)
                             }
                         }
                     }
                 }
                 .onAppear {
-                    statsManager.fetchStats()
+                    model.statsManager.fetchStats()
                 }
                 
             } else {
@@ -44,26 +62,9 @@ struct StatsView: View {
                 }
             }
         }
-        .sheet(isPresented: $isPresented) {
+        .sheet(isPresented: $isPresented, onDismiss: {model.statsManager.fetchStats()}) {
             NavigationView {
-                HostView(host: $statsManager.host)
-                    .toolbar {
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button(action: {
-                                isPresented = false
-                            }){
-                                Text("Cancel")
-                            }
-                        }
-                        ToolbarItem(placement: .confirmationAction) {
-                            Button(action: {
-                                statsManager.fetchStats()
-                                isPresented = false
-                            }){
-                                Text("Update")
-                            }
-                        }
-                    }
+                HostView(host: $model.statsManager.host, isPresented: $isPresented)
             }
         }
     }
@@ -79,14 +80,14 @@ struct StatsView: View {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
         
-        return Text(formatter.string(from: statsManager.updatedAt))
+        return Text(formatter.string(from: model.statsManager.updatedAt))
     }
 }
 
-struct StatsView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            StatsView(statsManager: StatsFetcher_Preview())
-        }
-    }
-}
+//struct StatsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            StatsView(model: .constant(StatsFetcher_Preview()))
+//        }
+//    }
+//}

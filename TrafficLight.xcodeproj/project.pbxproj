@@ -104,6 +104,8 @@
 		7648E5FF25ABF29700248B94 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		76598B2025DFF42F0014EC51 /* HostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostView.swift; sourceTree = "<group>"; };
 		76598B3225E265BF0014EC51 /* HostRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostRowView.swift; sourceTree = "<group>"; };
+		765FB39B25E57CE3000C61DB /* TrafficLight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TrafficLight.entitlements; sourceTree = "<group>"; };
+		765FB3A125E57D36000C61DB /* TrafficLight WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TrafficLight WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		7667344E25C9B26D00765108 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		76808EBD25E2C0B100A8A76A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		76A43E8425A9B8FB008D299B /* Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		76A4D13725A601DF0086BC50 /* TrafficLight */ = {
 			isa = PBXGroup;
 			children = (
+				765FB39B25E57CE3000C61DB /* TrafficLight.entitlements */,
 				76A4D13825A601DF0086BC50 /* TrafficLightApp.swift */,
 				76A4D13C25A601E00086BC50 /* Assets.xcassets */,
 				76A4D14125A601E00086BC50 /* Info.plist */,
@@ -261,6 +264,7 @@
 		76A4D16A25A601E10086BC50 /* TrafficLight WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				765FB3A125E57D36000C61DB /* TrafficLight WatchKit Extension.entitlements */,
 				76A4D16B25A601E10086BC50 /* TrafficLightApp.swift */,
 				76A4D16F25A601E10086BC50 /* NotificationController.swift */,
 				76A4D17125A601E10086BC50 /* NotificationView.swift */,
@@ -691,6 +695,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "TrafficLight WatchKit Extension/TrafficLight WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TrafficLight WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 4C97TKN2HL;
@@ -715,6 +720,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "TrafficLight WatchKit Extension/TrafficLight WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TrafficLight WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 4C97TKN2HL;
@@ -797,6 +803,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TrafficLight/TrafficLight.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TrafficLight/Preview Content\"";
 				DEVELOPMENT_TEAM = 4C97TKN2HL;
@@ -820,6 +827,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TrafficLight/TrafficLight.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TrafficLight/Preview Content\"";
 				DEVELOPMENT_TEAM = 4C97TKN2HL;
