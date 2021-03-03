@@ -40,9 +40,9 @@ struct StatDetailView: View {
         .padding()
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button(action: {statsManager.fetchStats()} ) {
+                Button(action: { statsManager.fetchStats() }, label: {
                     Image(systemName: "arrow.clockwise")
-                }
+                })
             }
         }
     }
@@ -66,10 +66,10 @@ struct StatDetailView: View {
     }
 }
 
-struct StatDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            StatDetailView(statsManager: StatsFetcher_Preview(), statIndex: 0)
-        }
-    }
-}
+//struct StatDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            StatDetailView(statsManager: StatsFetcher_Preview(), statIndex: 0)
+//        }
+//    }
+//}

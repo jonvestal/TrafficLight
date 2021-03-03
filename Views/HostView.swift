@@ -7,49 +7,62 @@
 
 import SwiftUI
 
-struct HostView: View {
-    @Binding var host: Host
-    @Binding var isPresented: Bool
+class HostViewModel: ObservableObject {
+    @AppStorage("host", store: UserDefaults(suiteName: "group.com.jdv.TrafficLight")) var hostData: Data = Data()
+    @Published var host: Host!
     
-    @AppStorage("name", store: UserDefaults(suiteName: "group.com.jdv.TrafficLight")) var name: String = ""
-    @AppStorage("url", store: UserDefaults(suiteName: "group.com.jdv.TrafficLight")) var url: String = ""
+    var storedHost: Host {
+        guard let host = try? JSONDecoder().decode(Host.self, from: hostData) else { return Host() }
+        return host
+    }
+    
+    init() {
+        
+        self.host = storedHost
+    }
+    
+    func save() {
+        let host = Host(name: self.host.name, url: self.host.url)
+        guard let hostData = try? JSONEncoder().encode(host) else { return }
+        self.hostData = hostData
+    }
+}
+
+struct HostView: View {
+    @Binding var isPresented: Bool
+    @ObservedObject var model = HostViewModel()
 
     var body: some View {
         VStack {
-            HostRowView(textField: $name, name: "Name")
-            HostRowView(textField: $url, name: "URL")
+            HostRowView(textField: $model.host.name, name: "Name")
+            HostRowView(textField: $model.host.url, name: "URL")
             Spacer()
         }
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Button(action: {
                     isPresented = false
-                }){
+                }, label: {
                     Text("Cancel")
-                }
+                })
             }
             ToolbarItem(placement: .confirmationAction) {
                 Button(action: {
-                    self.save()
+                    self.model.save()
                     isPresented = false
-                }){
+                }, label: {
                     Text("Update")
-                }
+                })
             }
         }
     }
-    
-    func save() {
-        host.name = name
-        host.url = url
-    }
 }
 
-struct HostView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            HostView(host: .constant(Host(name: "", url: "")),
-                     isPresented: .constant(false))
-        }
-    }
-}
+//struct HostView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            HostView(host: .constant(Host(name: "", url: "")),
+//                     isPresented: .constant(false))
+//        }
+//    }
+//}

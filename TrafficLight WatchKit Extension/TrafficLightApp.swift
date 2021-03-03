@@ -12,7 +12,7 @@ struct TrafficLightApp: App {
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {
-                StatsView()
+                WatchStatsView()
             }
         }
 

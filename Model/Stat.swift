@@ -41,9 +41,12 @@ struct Stat: Equatable, Hashable, Identifiable {
 extension Stat {
     static var data: [Stat] {
         [
-            Stat(timestamp: Date(), type: "Switches", greenCount: 175, yellowCount: 4, redCount: 1, description: "Switches in the network."),
-            Stat(timestamp: Date(), type: "Backbones", greenCount: 350, yellowCount: 10, redCount: 2, description: "Backbone circuits in the network."),
-            Stat(timestamp: Date(), type: "Services", greenCount: 100, yellowCount: 20, redCount: 0, description: "Total of number of services deployed.")
+            Stat(timestamp: Date(), type: "Switches", greenCount: 175, yellowCount: 4, redCount: 1,
+                 description: "Switches in the network."),
+            Stat(timestamp: Date(), type: "Backbones", greenCount: 350, yellowCount: 10, redCount: 2,
+                 description: "Backbone circuits in the network."),
+            Stat(timestamp: Date(), type: "Services", greenCount: 100, yellowCount: 20, redCount: 0,
+                 description: "Total of number of services deployed.")
         ]
     }
 }

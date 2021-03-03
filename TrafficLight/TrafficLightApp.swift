@@ -12,7 +12,7 @@ struct TrafficLightApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                StatsView()
+                PhoneStatsView()
             }
         }
     }

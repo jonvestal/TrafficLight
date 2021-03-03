@@ -9,14 +9,12 @@
 /* Begin PBXBuildFile section */
 		7648E60025ABF29700248B94 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7648E5FF25ABF29700248B94 /* ContentView.swift */; };
 		76598B2125DFF42F0014EC51 /* HostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76598B2025DFF42F0014EC51 /* HostView.swift */; };
-		76598B2225DFF42F0014EC51 /* HostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76598B2025DFF42F0014EC51 /* HostView.swift */; };
 		76598B3325E265BF0014EC51 /* HostRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76598B3225E265BF0014EC51 /* HostRowView.swift */; };
 		76598B3425E265BF0014EC51 /* HostRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76598B3225E265BF0014EC51 /* HostRowView.swift */; };
-		76598B4525E2AB000014EC51 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7667344E25C9B26D00765108 /* StatsView.swift */; };
 		766733EF25C7EB8600765108 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A43E8425A9B8FB008D299B /* Host.swift */; };
 		7667340025C7EBB300765108 /* StatsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C47A8D25C6C2CE002181CB /* StatsRowView.swift */; };
 		7667340625C7EBB700765108 /* StatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C47A9425C6E5F1002181CB /* StatDetailView.swift */; };
-		7667344F25C9B26D00765108 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7667344E25C9B26D00765108 /* StatsView.swift */; };
+		7667344F25C9B26D00765108 /* PhoneStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7667344E25C9B26D00765108 /* PhoneStatsView.swift */; };
 		76A43E8525A9B8FB008D299B /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A43E8425A9B8FB008D299B /* Host.swift */; };
 		76A4D13925A601DF0086BC50 /* TrafficLightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A4D13825A601DF0086BC50 /* TrafficLightApp.swift */; };
 		76A4D13D25A601E00086BC50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76A4D13C25A601E00086BC50 /* Assets.xcassets */; };
@@ -42,6 +40,9 @@
 		76A4D21025A60E9E0086BC50 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 76A4D20F25A60E9E0086BC50 /* Alamofire */; };
 		76C47A8E25C6C2CE002181CB /* StatsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C47A8D25C6C2CE002181CB /* StatsRowView.swift */; };
 		76C47A9525C6E5F1002181CB /* StatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C47A9425C6E5F1002181CB /* StatDetailView.swift */; };
+		76D7112925E7C330000278DB /* PhoneWCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D7112825E7C330000278DB /* PhoneWCModel.swift */; };
+		76D7113525E7C427000278DB /* WatchWCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D7113425E7C427000278DB /* WatchWCModel.swift */; };
+		76D7114B25E7F221000278DB /* WatchStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D7114A25E7F221000278DB /* WatchStatsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +107,7 @@
 		76598B3225E265BF0014EC51 /* HostRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostRowView.swift; sourceTree = "<group>"; };
 		765FB39B25E57CE3000C61DB /* TrafficLight.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TrafficLight.entitlements; sourceTree = "<group>"; };
 		765FB3A125E57D36000C61DB /* TrafficLight WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TrafficLight WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		7667344E25C9B26D00765108 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		7667344E25C9B26D00765108 /* PhoneStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneStatsView.swift; sourceTree = "<group>"; };
 		76808EBD25E2C0B100A8A76A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		76A43E8425A9B8FB008D299B /* Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
 		76A4D13525A601DF0086BC50 /* TrafficLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrafficLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +137,9 @@
 		76A4D1A425A606A00086BC50 /* StatsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsFetcher.swift; sourceTree = "<group>"; };
 		76C47A8D25C6C2CE002181CB /* StatsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRowView.swift; sourceTree = "<group>"; };
 		76C47A9425C6E5F1002181CB /* StatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatDetailView.swift; sourceTree = "<group>"; };
+		76D7112825E7C330000278DB /* PhoneWCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneWCModel.swift; sourceTree = "<group>"; };
+		76D7113425E7C427000278DB /* WatchWCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWCModel.swift; sourceTree = "<group>"; };
+		76D7114A25E7F221000278DB /* WatchStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStatsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +183,8 @@
 			children = (
 				76C47A8D25C6C2CE002181CB /* StatsRowView.swift */,
 				76C47A9425C6E5F1002181CB /* StatDetailView.swift */,
-				7667344E25C9B26D00765108 /* StatsView.swift */,
+				7667344E25C9B26D00765108 /* PhoneStatsView.swift */,
+				76D7114A25E7F221000278DB /* WatchStatsView.swift */,
 				76598B2025DFF42F0014EC51 /* HostView.swift */,
 				76598B3225E265BF0014EC51 /* HostRowView.swift */,
 			);
@@ -292,6 +297,8 @@
 				76A4D1A425A606A00086BC50 /* StatsFetcher.swift */,
 				76A4D19C25A6044E0086BC50 /* Stat.swift */,
 				76A43E8425A9B8FB008D299B /* Host.swift */,
+				76D7112825E7C330000278DB /* PhoneWCModel.swift */,
+				76D7113425E7C427000278DB /* WatchWCModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -314,6 +321,7 @@
 				76A4D13225A601DF0086BC50 /* Frameworks */,
 				76A4D13325A601DF0086BC50 /* Resources */,
 				76A4D18525A601E10086BC50 /* Embed Watch Content */,
+				76A3863F25EFC7600040EA9E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -501,6 +509,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		76A3863F25EFC7600040EA9E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		76A4D13125A601DF0086BC50 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -511,10 +539,11 @@
 				76598B3325E265BF0014EC51 /* HostRowView.swift in Sources */,
 				76598B2125DFF42F0014EC51 /* HostView.swift in Sources */,
 				76A4D19D25A6044E0086BC50 /* Stat.swift in Sources */,
+				76D7112925E7C330000278DB /* PhoneWCModel.swift in Sources */,
 				76C47A8E25C6C2CE002181CB /* StatsRowView.swift in Sources */,
 				76A43E8525A9B8FB008D299B /* Host.swift in Sources */,
 				76A4D13925A601DF0086BC50 /* TrafficLightApp.swift in Sources */,
-				7667344F25C9B26D00765108 /* StatsView.swift in Sources */,
+				7667344F25C9B26D00765108 /* PhoneStatsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,14 +571,14 @@
 				7667340025C7EBB300765108 /* StatsRowView.swift in Sources */,
 				76A4D17425A601E10086BC50 /* ComplicationController.swift in Sources */,
 				76A4D1F725A60DA90086BC50 /* Stat.swift in Sources */,
+				76D7114B25E7F221000278DB /* WatchStatsView.swift in Sources */,
 				7667340625C7EBB700765108 /* StatDetailView.swift in Sources */,
 				76598B3425E265BF0014EC51 /* HostRowView.swift in Sources */,
 				766733EF25C7EB8600765108 /* Host.swift in Sources */,
 				76A4D16C25A601E10086BC50 /* TrafficLightApp.swift in Sources */,
 				7648E60025ABF29700248B94 /* ContentView.swift in Sources */,
-				76598B4525E2AB000014EC51 /* StatsView.swift in Sources */,
+				76D7113525E7C427000278DB /* WatchWCModel.swift in Sources */,
 				76A4D1FD25A60DAE0086BC50 /* StatsFetcher.swift in Sources */,
-				76598B2225DFF42F0014EC51 /* HostView.swift in Sources */,
 				76A4D17225A601E10086BC50 /* NotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

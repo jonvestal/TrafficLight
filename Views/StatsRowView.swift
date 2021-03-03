@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StatsRowView: View {
     let stat: Stat
-    
+
     var body: some View {
         HStack {
             Text(stat.type)

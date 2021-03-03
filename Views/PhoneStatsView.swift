@@ -1,5 +1,5 @@
 //
-//  StatsView.swift
+//  PhoneStatsView.swift
 //  TrafficLight
 //
 //  Created by Jon Vestal on 31/1/21.
@@ -10,25 +10,22 @@ import SwiftUI
 import Combine
 
 class Model: ObservableObject {
-    @Published var statsManager: StatsFetcher = StatsFetcher(host: Host(name: "", url: ""))
-    @AppStorage("name", store: UserDefaults(suiteName: "group.com.jdv.TrafficLight")) var name: String = ""
-    @AppStorage("url", store: UserDefaults(suiteName: "group.com.jdv.TrafficLight")) var url: String = ""
+    @Published var statsManager: StatsFetcher = StatsFetcher()
     
-    var anyCancellable: AnyCancellable? = nil
+    var anyCancellable: AnyCancellable?
     
     init() {
         anyCancellable = statsManager.objectWillChange.sink { [weak self] (_) in
             self?.objectWillChange.send()
         }
-        
-        statsManager.host = Host(name: name, url: url)
-        print("init model. name = \(name), url = \(url)")
     }
 }
 
-struct StatsView: View {
+struct PhoneStatsView: View {
     @State private var isPresented = false
     @StateObject var model: Model = Model()
+    
+    @ObservedObject var wcModel = PhoneWCModel()
     
     var body: some View {
         VStack {
@@ -36,7 +33,8 @@ struct StatsView: View {
                 List {
                     Section(header: Text("\(model.statsManager.host.name)"), footer: updateAtText().font(.caption)) {
                         ForEach(model.statsManager.stats) { stat in
-                            NavigationLink(destination: StatDetailView(statsManager: model.statsManager, statIndex: index(for: stat, in: model.statsManager))) {
+                            NavigationLink(destination: StatDetailView(statsManager: model.statsManager,
+                                                                       statIndex: index(for: stat, in: model.statsManager))) {
                                 StatsRowView(stat: stat)
                             }
                         }
@@ -48,25 +46,25 @@ struct StatsView: View {
                 
             } else {
                 Text("You need to add a host first.")
-                Button(action: {isPresented = true}) {
+                Button(action: { isPresented = true }, label: {
                     Text("Host")
-                }
+                })
             }
+            #if DEBUG
+            Spacer()
+            Text("Connected \(wcModel.isConnected)")
+            #endif
         }
         .toolbar {
             ToolbarItem {
-                Button(action: {
-                    isPresented = true
-                }) {
+                Button(action: { isPresented = true }, label: {
                     Text("Host")
-                }
+                })
             }
         }
-        .sheet(isPresented: $isPresented, onDismiss: {model.statsManager.fetchStats()}) {
-            NavigationView {
-                HostView(host: $model.statsManager.host, isPresented: $isPresented)
-            }
-        }
+        .sheet(isPresented: $isPresented, onDismiss: { model.statsManager.fetchStats() }, content: {
+            NavigationView { HostView(isPresented: $isPresented) }
+        })
     }
     
     private func index(for stat: Stat, in statsManager: StatsFetcher) -> Int {

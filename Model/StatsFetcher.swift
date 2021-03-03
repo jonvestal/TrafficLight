@@ -8,23 +8,39 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import SwiftUI
 
 public class StatsFetcher: ObservableObject, Identifiable {
     @Published var stats: [Stat] = []
     @Published var fetchError: Bool = false
     @Published var updatedAt: Date = Date()
-    @Published var host: Host
+    @Published var host: Host!
+    @AppStorage("host", store: UserDefaults(suiteName: "group.com.jdv.TrafficLight")) var hostData: Data = Data()
     
-    init(host: Host) {
-        self.host = host
+    var storedHost: Host {
+        guard let host = try? JSONDecoder().decode(Host.self, from: hostData) else {
+            return Host()
+        }
+        return host
+    }
+    
+    init() {
+        self.host = storedHost
         self.fetchStats()
         
-        Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { timer in
+        Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { _ in
             self.fetchStats()
         })
     }
     
+    func save() {
+        let host = Host(name: self.host.name, url: self.host.url)
+        guard let hostData = try? JSONEncoder().encode(host) else { return }
+        self.hostData = hostData
+    }
+    
     func fetchStats() {
+        self.host = storedHost
         if !host.url.isEmpty {
             AF.request(host.url).responseJSON { response in
                 switch response.result {
@@ -55,10 +71,10 @@ public class StatsFetcher: ObservableObject, Identifiable {
     }
 }
 
-public class StatsFetcher_Preview: StatsFetcher {
-    init() {
-        super.init(host: Host(name: "Host 1", url: "http://127.0.0.1/stats"))
-        self.stats.append(Stat(timestamp: Date(), type: "Stat 1", greenCount: 10, yellowCount: 5, redCount: 2, description: "Description"))
-        self.stats.append(Stat(timestamp: Date(), type: "Stat 2", greenCount: 100, yellowCount: 2134, redCount: 234, description: "Description"))
-    }
-}
+//public class StatsFetcher_Preview: StatsFetcher {
+//    init() {
+//        super.init(host: Host(name: "Host 1", url: "http://127.0.0.1/stats"))
+//        self.stats.append(Stat(timestamp: Date(), type: "Stat 1", greenCount: 10, yellowCount: 5, redCount: 2, description: "Description"))
+//        self.stats.append(Stat(timestamp: Date(), type: "Stat 2", greenCount: 100, yellowCount: 2134, redCount: 234, description: "Description"))
+//    }
+//}

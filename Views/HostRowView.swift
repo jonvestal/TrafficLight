@@ -10,7 +10,7 @@ import SwiftUI
 struct HostRowView: View {
     @Environment(\.colorScheme) var colorScheme
     
-    @Binding var textField:  String
+    @Binding var textField: String
     
     public var name: String
     

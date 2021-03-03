@@ -1,0 +1,18 @@
+excluded:
+  - Pods
+
+identifier_name:
+  excluded:
+    - id
+    - URL
+
+line_length:
+  warning: 150
+  error: 200
+  ignores_function_declarations: true
+  ignores_comments: true
+  ignores_urls: true
+
+disabled_rules:
+  - trailing_whitespace
+  - comment_spacing
