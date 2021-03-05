@@ -21,12 +21,35 @@ class Stat:
                      'redCount': self.redCount,
                      'description': self.description}
 
+class Stat2:
+    def __init__(self, name, description, green, yellow, red):
+        self.timestamp = datetime.datetime.now().timestamp()
+        self.name = name
+        self.greenCount = green
+        self.yellowCount = yellow
+        self.redCount = red
+        self.description = description
+        self.stat = {'timestamp': self.timestamp,
+                     'type': self.name,
+                     'greenCount': self.greenCount,
+                     'yellowCount': self.yellowCount,
+                     'redCount': self.redCount,
+                     'description': self.description}
+
 
 class Stats(Resource):
     def get(self):
-        stats = {"stats": [Stat('Backbone', 'Number of backbone links').stat,
-                           Stat('Devices', 'Number of devices').stat,
-                           Stat('Services', 'Number of services').stat]}
+        stats = {"stats": [Stat2('MVP UAT',
+                                 'User stories in the MVP UAT release for g360.  Green represent DONE, Yellow IN-PROGRESS, Red TODO',
+                                 21,
+                                 17,
+                                 72).stat,
+                           Stat2('Current Sprint',
+                                 'Progress of current sprint measured in total story points.  Green is DONE, Yellow is IN-PROGRESS, Red is TODO',
+                                 38.9,
+                                 51,
+                                 23.5).stat,
+                           Stat('Random Data', 'Everything is made up').stat]}
         print(stats)
         return stats, 200
 
