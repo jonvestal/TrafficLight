@@ -70,11 +70,3 @@ public class StatsFetcher: ObservableObject, Identifiable {
         }
     }
 }
-
-//public class StatsFetcher_Preview: StatsFetcher {
-//    init() {
-//        super.init(host: Host(name: "Host 1", url: "http://127.0.0.1/stats"))
-//        self.stats.append(Stat(timestamp: Date(), type: "Stat 1", greenCount: 10, yellowCount: 5, redCount: 2, description: "Description"))
-//        self.stats.append(Stat(timestamp: Date(), type: "Stat 2", greenCount: 100, yellowCount: 2134, redCount: 234, description: "Description"))
-//    }
-//}

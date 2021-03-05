@@ -55,6 +55,7 @@ struct PhoneStatsView: View {
             Text("Connected \(wcModel.isConnected)")
             #endif
         }
+        .navigationTitle("TrafficLight Stats")
         .toolbar {
             ToolbarItem {
                 Button(action: { isPresented = true }, label: {

@@ -12,38 +12,35 @@ struct StatDetailView: View {
     var statIndex: Int
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(statsManager.stats[statIndex].type)
-                .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
-                .font(.headline)
-                .padding(.vertical)
-            twoColumnStack(lhs: "Green", rhs: statsManager.stats[statIndex].greenCount.description, color: .green)
-            twoColumnStack(lhs: "Yellow", rhs: statsManager.stats[statIndex].yellowCount.description, color: .yellow)
-            twoColumnStack(lhs: "Red", rhs: statsManager.stats[statIndex].redCount.description, color: .red)
-            
-            Text("Description:")
-                .font(.headline)
-                .padding(.top, 25)
-            Text(statsManager.stats[statIndex].description)
-                .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                .padding(.top, 5)
-
-            HStack {
-                Text("Updated:  ")
-                Spacer()
+        ScrollView {
+            VStack(alignment: .leading) {
+                Text(statsManager.stats[statIndex].type)
+                    .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
+                    .font(.headline)
+                    .padding(.vertical)
+                
+                twoColumnStack(lhs: "Green", rhs: statsManager.stats[statIndex].greenCount.description, color: .green)
+                twoColumnStack(lhs: "Yellow", rhs: statsManager.stats[statIndex].yellowCount.description, color: .yellow)
+                twoColumnStack(lhs: "Red", rhs: statsManager.stats[statIndex].redCount.description, color: .red)
+                
+                Text("Description:")
+                    .font(.headline)
+                    .padding(.top, 25)
+                
+                Text(statsManager.stats[statIndex].description)
+                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                    .padding(.top, 5)
+                    .padding(.vertical)
+                
                 updateAtText()
+                    .onTapGesture {
+                        statsManager.fetchStats()
+                    }
+                    .font(.caption)
+                
+                Spacer()
             }
-            .padding(.vertical)
-            .font(.caption)
-            Spacer()
-        }
-        .padding()
-        .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Button(action: { statsManager.fetchStats() }, label: {
-                    Image(systemName: "arrow.clockwise")
-                })
-            }
+            .padding()
         }
     }
     
@@ -69,7 +66,10 @@ struct StatDetailView: View {
 //struct StatDetailView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        NavigationView {
-//            StatDetailView(statsManager: StatsFetcher_Preview(), statIndex: 0)
+//            StatDetailView(statsManager: StatsFetcher(host: Host(name: "Test Server", url: "http://127.0.0.1:5000/stats"),
+//                                                      stats: [Stat(timestamp: Date(), type: "Test Stat", greenCount: 10,
+//                                                                   yellowCount: 8, redCount: 5, description: "Stat Description")]),
+//                           statIndex: 1)
 //        }
 //    }
 //}

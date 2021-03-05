@@ -48,6 +48,7 @@ struct WatchStatsView: View {
                 Text("You need to add a host first from the paired iPhone.")
             }
         }
+        .navigationTitle("Stats")
     }
     
     private func index(for stat: Stat, in statsManager: StatsFetcher) -> Int {
